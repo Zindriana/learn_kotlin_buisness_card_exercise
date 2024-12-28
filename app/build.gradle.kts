@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.kotlin_business_card_exercise"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.kotlin_business_card_exercise"
