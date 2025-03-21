@@ -5,19 +5,20 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlin_business_card_exercise.ui.theme.Kotlin_business_card_exerciseTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +27,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             Kotlin_business_card_exerciseTheme {
                 Column {
-                    Column {
+                    Column (
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         LogoImage()
                         TitleCard(title = "Testnamn", name = "testtitel")
                     }
-                    Column {
+                    Column (
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
                         ContactInfo(phoneNumber = "0712345678", socialMedia = "testur", email = "test@test.se")
                     }
                 }
@@ -48,12 +55,21 @@ fun LogoImage() {
     )
 }
 
+@Composable
+fun IconExample() {
+    Icon(
+        imageVector = Icons.Filled.Favorite,
+        contentDescription = "Favorite Icon"
+    )
+}
+
 
 @Composable
 fun TitleCard(title: String, name: String) {
     Column {
         Text(
-            text = name
+            text = name,
+            color = Color(0xFF3ddc84)
         )
         Text(
             text = title
@@ -65,16 +81,19 @@ fun TitleCard(title: String, name: String) {
 fun ContactInfo(phoneNumber: String, socialMedia: String, email: String) {
     Column {
         Row {
+            IconExample()
             Text(
                 text = phoneNumber
             )
         }
         Row {
+            IconExample()
             Text(
                 text = socialMedia
             )
         }
         Row {
+            IconExample()
             Text(
                 text = email
             )
